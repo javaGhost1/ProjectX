@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block banner %}
+<div class="row">
+    <div class="col-2">
+        <h1>Get Your Items <br> in Style!</h1>
+        <p>Getting the best electronic devices is not always easy.
+            At G-Mall, <br> we sell you the best Electronic Devices in 
+            the Country.
+        </p>
+        <a href="" class="btn">View More Items   &#8594</a>
+    </div>
+    <div class="col-2">
+        <img src="{% static 'images/Top.jpg'%}" alt="PC User">
+    </div>
+</div>{% endblock banner %}
 {% block content %}
-
-    
-
-
-
 <div class="categories">
     <div class="small-container">
+       
         <div class="row">
             {% for product in laptops %}
             <div class="col-3"> 
@@ -52,6 +62,37 @@
         </div>
         {% endfor %}
     </div>
+    <h2 class="title">Latest Products</h2>
+    <div class="row">
+        {% for product in latest %}
+        <div class="col-4">
+            <img src="{{product.image.url}}">
+            <h4>{{product.name}}</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+            <p>Ksh.{{product.price}}</p>
+        </div>
+        {% endfor %}
+    </div>
 </div>
-
+<div class="offer">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-2">
+            <img src="{%static 'images/Offer.webp'%}" class="offer-img">
+            </div>
+            <div class="col-2">
+                <p>Exclusively Available on G-Mall</p>
+                <h1>Diamond Drip</h1>
+                <small>Premium Swiss Made Luxury Watch Brands.</small>
+                <a href="" class="btn">Buy Now &#8594;</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

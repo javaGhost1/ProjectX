@@ -27,6 +27,8 @@ class Brand(models.Model):
     """
     name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
 
     class Meta:
         ordering = ('name',)
@@ -42,7 +44,7 @@ class Product(models.Model):
         Product database model
     """
     category = models.ForeignKey(Category,related_name='products', on_delete=models.CASCADE)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    brand = models.ForeignKey(Brand, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True)
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
@@ -55,7 +57,7 @@ class Product(models.Model):
     class Meta:
         ordering = ('name',)
         index_together = (('id', 'slug'),)
-
+    
     def __str__(self):
         return self.name
 

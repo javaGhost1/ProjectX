@@ -15,7 +15,7 @@
         <div class="container">
             <div class="navbar">
                 <div class="logo">
-                    <img src="images/logo.jpg" alt="logo" height="40px" width="50px">
+                    <img src="{% static 'images/logo.jpg'%}" alt="logo" height="40px" width="50px">
                 </div>
                 <nav>
                     <ul>
@@ -26,22 +26,13 @@
                         <li><a href="">Account</a></li>
                     </ul>
                 </nav>
-                <img src="images/cart.jpg" alt="cart" width="30px" height="30px">
+                <img src="{% static 'images/cart.jpg'%}" alt="cart" width="30px" height="30px">
             </div>
+            {% block banner %}
+        
+        {% endblock banner %}
         </div>
-        <div class="row">
-            <div class="col-2">
-                <h1>Get Your Items <br> in Style!</h1>
-                <p>Getting the best electronic devices is not always easy.
-                    At G-Mall, <br> we sell you the best Electronic Devices in 
-                    the Country.
-                </p>
-                <a href="" class="btn">View More Items   &#8594</a>
-            </div>
-            <div class="col-2">
-                {% comment %} <img src="images/Top.jpg" alt="PC User"> {% endcomment %}
-            </div>
-        </div>
+        
     </div>
         {% block content %}
         {% endblock %}

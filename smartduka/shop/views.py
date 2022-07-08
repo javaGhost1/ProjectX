@@ -5,7 +5,9 @@ from .models import *
 def product_list(request):
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
-    laptops = Product.objects.filter(category=1)
+    laptops = Product.objects.filter(category=1).order_by('id')[:3]
     speakers = Product.objects.filter(category=2)
-    context = {'products':products, 'categories':categories, 'laptops':laptops, 'speakers':speakers}
+    # screens = Product.objects.filter(categories.name=='screen')
+    latest = products.order_by('-id')[:6]
+    context = {'products':products, 'categories':categories, 'laptops':laptops, 'speakers':speakers, 'latest':latest}
     return render(request, 'product/index.html', context)
